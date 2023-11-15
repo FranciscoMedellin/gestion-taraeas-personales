@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        #crearTareaPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        #editarTareaPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .tarea-item {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tarea-item button {
+            margin-left: 10px;
+        }
+
+        .filtros {
+            margin-bottom: 20px;
+        }
+
+        .filtros select {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="./equipos.html">Equipos</a>
+        <a href="#">Tareas</a>
+        <a href="#">Configuraciones</a>
+    </nav>
+
+    <div class="container">
+        <section id="crearTareaPopup">
+            <h2>Crear Tarea</h2>
+            <!-- Agregar campos para la creación de tareas según tus necesidades -->
+            <label for="descripcionTarea">Descripcion de Tarea: </label>
+            <input type="text" id="descripcionTarea" required><br>
+            <label for="nombreUsuario">Asignar a Usuario: </label>
+            <input type="text" id="nombreUsuario" required><br>
+            <label for="tag">Tag: </label>
+            <input type="text" id="tag" required><br>
+            <label for="fechaLimite">Fecha Limite: </label>
+            <input type="date" id="fechaLimite"><br>
+            <label for="prioridad">Prioridad: </label>
+            <select name="prioridades" id="prioridad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select><br>
+
+            <button onclick="crearTarea()">Crear</button>
+            <button onclick="cerrarCrearTareaPopup()">Cerrar</button>
+        </section>
+
+        <section id="editarTareaPopup">
+            <h2>Editar Tarea</h2>
+            <!-- Agregar campos para la edición de tareas según tus necesidades -->
+            <label for="descripcionTarea">Descripcion de Tarea: </label>
+            <input type="text" id="descripcionTarea" required><br>
+            <label for="nombreUsuario">Asignar a Usuario: </label>
+            <input type="text" id="nombreUsuario" required><br>
+            <label for="tag">Tag: </label>
+            <input type="text" id="tag" required><br>
+            <label for="fechaLimite">Fecha Limite: </label>
+            <input type="date" id="fechaLimite"><br>
+            <label for="prioridad">Prioridad: </label>
+            <select name="prioridades" id="prioridad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select><br>
+            
+            <button onclick="guardarCambiosTarea()">Guardar Cambios</button>
+            <button onclick="cerrarEditarTareaPopup()">Cerrar</button>
+        </section>
+
+        <section class="filtros">
+            <h2>Filtros</h2>
+            <label for="equipoFiltro">Equipo:</label>
+            <select id="equipoFiltro">
+                <!-- Opciones de equipos se generarán dinámicamente aquí -->
+            </select>
+            <label for="fechaFiltro">Fecha:</label>
+            <input type="date" id="fechaFiltro">
+            <label for="usuarioFiltro">Usuario:</label>
+            <input type="text" id="usuarioFiltro">
+            <label for="grupoTagFiltro">Grupo Tag:</label>
+            <input type="text" id="grupoTagFiltro">
+            <label for="prioridadFiltro">Prioridad:</label>
+            <select id="prioridadFiltro">
+                <option value="all">Todas</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <button onclick="aplicarFiltros()">Aplicar Filtros</button>
+        </section>
+
+        <section>
+            <button onclick="mostrarCrearTareaPopup()">Crear Tarea</button>
+            
+            <div id="listaTareas">
+                <h2>Lista de Tareas</h2>
+                <!-- La lista de tareas se generará dinámicamente aquí -->
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+        // Supongamos que estos son algunos equipos obtenidos del servidor
+        const equiposTareas = [
+            { nombre: 'Equipo 1', id: 1 },
+            { nombre: 'Equipo 2', id: 2 },
+            // Agrega más equipos según sea necesario
+        ];
+        
+        // Supongamos que estas son algunas tareas obtenidas del servidor
+        const tareas = [
+            { id: 1, nombre: 'Tarea 1', usuario: 'Usuario1', fechaLimite: '2023-11-15', tag: 'Tag1', prioridad: 'alta', equipo: 'Equipo 1' },
+            { id: 2, nombre: 'Tarea 2', usuario: 'Usuario2', fechaLimite: '2023-11-20', tag: 'Tag2', prioridad: 'media', equipo: 'Equipo 2' },
+            // Agrega más tareas según sea necesario
+        ];
+        
+        // Mostrar Crear Tarea PopUp
+        function mostrarCrearTareaPopup() {
+            document.getElementById("crearTareaPopup").style.display = "block";
+        }
+        
+        function crearTarea() {
+            // Lógica para crear una tarea (puedes agregarla según tus necesidades)
+            alert('Tarea creada correctamente');
+            cerrarCrearTareaPopup();
+        }
+
+        function cerrarCrearTareaPopup() {
+            document.getElementById("crearTareaPopup").style.display = "none";
+        }
+
+        function mostrarEditarTareaPopup() {
+            document.getElementById("editarTareaPopup").style.display = "block";
+        }
+
+        function editarTarea(id) {
+            // Puedes agregar aquí la lógica para obtener la información de la tarea
+            // y prellenar el formulario de edición si es necesario.
+            document.getElementById("editarTareaPopup").style.display = "block";
+        }
+
+        function cerrarEditarTareaPopup() {
+            document.getElementById("editarTareaPopup").style.display = "none";
+        }
+
+        function guardarCambiosTarea() {
+            // Lógica para guardar cambios en la tarea editada
+            alert('Cambios en la tarea guardados correctamente');
+            cerrarEditarTareaPopup();
+        }
+
+        function eliminarTarea(id) {
+            // Lógica para eliminar una tarea (puedes agregarla según tus necesidades)
+            alert('Tarea eliminada correctamente');
+            // Puedes recargar la lista de tareas después de eliminar una tarea si es necesario
+        }
+
+        function aplicarFiltros() {
+            // Lógica para aplicar los filtros seleccionados y actualizar la lista de tareas
+            // Puedes ajustar esto según tus necesidades
+            alert('Filtros aplicados correctamente');
+        }
+
+
+        // Función para renderizar la lista de equipos en los filtros
+        function renderizarListaEquiposTareas() {
+            const equipoFiltroElement = document.getElementById('equipoFiltro');
+            equiposTareas.forEach(equipo => {
+                const option = document.createElement('option');
+                option.value = equipo.id;
+                option.text = equipo.nombre;
+                equipoFiltroElement.add(option);
+            });
+        }
+
+        // Llamamos a la función para que la lista de equipos se renderice al cargar la página
+        renderizarListaEquiposTareas();
+
+
+        // Función para renderizar la lista de tareas
+        function renderizarListaTareas() {
+            const listaTareasElement = document.getElementById('listaTareas');
+            listaTareasElement.innerHTML = '';
+
+            tareas.forEach(tarea => {
+                const tareaItem = document.createElement('div');
+                tareaItem.className = 'tarea-item';
+                tareaItem.innerHTML = `
+                    <div>
+                        <p>${tarea.nombre}</p>
+                        <p>${tarea.usuario}</p>
+                        <p>${tarea.fechaLimite}</p>
+                        <p>${tarea.tag}</p>
+                        <p>${tarea.prioridad}</p>
+                        <p>${tarea.equipo}</p>
+                    </div>
+                    <div>
+                        <button onclick="editarTarea(${tarea.id})">Editar</button>
+                        <button onclick="eliminarTarea(${tarea.id})">Eliminar</button>
+                    </div>
+                `;
+                listaTareasElement.appendChild(tareaItem);
+            });
+        }
+
+        // Llamamos a la función para que la lista de tareas se renderice al cargar la página
+        renderizarListaTareas();
+    </script>
+</body>
+</html>

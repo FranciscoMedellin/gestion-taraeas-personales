@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuraciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        #editarNombrePopup,
+        #editarEmailPopup,
+        #cambiarContrasenaPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Equipos</a>
+        <a href="#">Tareas</a>
+        <a href="#">Configuraciones</a>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h2>Configuraciones</h2>
+            
+            <div>
+                <p>Nombre del Usuario: <span id="nombreUsuario">Juan Pérez</span></p>
+                <button onclick="mostrarEditarNombrePopup()">Editar Nombre</button>
+            </div>
+
+            <div>
+                <p>Email: <span id="emailUsuario">juan.perez@example.com</span></p>
+                <button onclick="mostrarEditarEmailPopup()">Editar Email</button>
+            </div>
+
+            <button onclick="mostrarCambiarContrasenaPopup()">Cambiar Contraseña</button>
+        </section>
+
+        <section id="editarNombrePopup">
+            <h2>Editar Nombre</h2>
+            <label for="nuevoNombreUsuario">Nuevo Nombre:</label>
+            <input type="text" id="nuevoNombreUsuario" required>
+            <button onclick="editarNombreUsuario()">Guardar Cambios</button>
+            <button onclick="cerrarEditarNombrePopup()">Cerrar</button>
+        </section>
+
+        <section id="editarEmailPopup">
+            <h2>Editar Email</h2>
+            <label for="nuevoEmailUsuario">Nuevo Email:</label>
+            <input type="email" id="nuevoEmailUsuario" required>
+            <button onclick="editarEmailUsuario()">Guardar Cambios</button>
+            <button onclick="cerrarEditarEmailPopup()">Cerrar</button>
+        </section>
+
+        <section id="cambiarContrasenaPopup">
+            <h2>Cambiar Contraseña</h2>
+            <label for="nuevaContrasena">Nueva Contraseña:</label>
+            <input type="password" id="nuevaContrasena" required>
+            <label for="confirmarContrasena">Confirmar Contraseña:</label>
+            <input type="password" id="confirmarContrasena" required>
+            <button onclick="cambiarContrasena()">Guardar Cambios</button>
+            <button onclick="cerrarCambiarContrasenaPopup()">Cerrar</button>
+        </section>
+    </div>
+
+    <script>
+        function mostrarEditarNombrePopup() {
+            document.getElementById("editarNombrePopup").style.display = "block";
+        }
+
+        function cerrarEditarNombrePopup() {
+            document.getElementById("editarNombrePopup").style.display = "none";
+        }
+
+        function editarNombreUsuario() {
+            // Lógica para editar el nombre del usuario
+            const nuevoNombre = document.getElementById("nuevoNombreUsuario").value;
+            document.getElementById("nombreUsuario").innerText = nuevoNombre;
+            alert('Nombre del usuario editado correctamente');
+            cerrarEditarNombrePopup();
+        }
+
+        function mostrarEditarEmailPopup() {
+            document.getElementById("editarEmailPopup").style.display = "block";
+        }
+
+        function cerrarEditarEmailPopup() {
+            document.getElementById("editarEmailPopup").style.display = "none";
+        }
+
+        function editarEmailUsuario() {
+            // Lógica para editar el email del usuario
+            const nuevoEmail = document.getElementById("nuevoEmailUsuario").value;
+            document.getElementById("emailUsuario").innerText = nuevoEmail;
+            alert('Email del usuario editado correctamente');
+            cerrarEditarEmailPopup();
+        }
+
+        function mostrarCambiarContrasenaPopup() {
+            document.getElementById("cambiarContrasenaPopup").style.display = "block";
+        }
+
+        function cerrarCambiarContrasenaPopup() {
+            document.getElementById("cambiarContrasenaPopup").style.display = "none";
+        }
+
+        function cambiarContrasena() {
+            // Lógica para cambiar la contraseña del usuario
+            const nuevaContrasena = document.getElementById("nuevaContrasena").value;
+            const confirmarContrasena = document.getElementById("confirmarContrasena").value;
+
+            if (nuevaContrasena === confirmarContrasena) {
+                alert('Contraseña cambiada correctamente');
+                cerrarCambiarContrasenaPopup();
+            } else {
+                alert('Las contraseñas no coinciden. Intenta de nuevo.');
+            }
+        }
+    </script>
+</body>
+</html>

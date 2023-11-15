@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos</title>
+    <link rel="stylesheet" href="../css/equipos.css">
+</head>
+<body>
+    <nav>
+        <a href="#">Equipos</a>
+        <a href="#">Tareas</a>
+        <a href="#">Configuraciones</a>
+    </nav>
+
+    <div class="container">
+        <section id="crearEquipoPopup">
+            <h2>Crear Equipo</h2>
+            <label for="nombreEquipo">Nombre del Equipo:</label>
+            <input type="text" id="nombreEquipo" required>
+            <button onclick="crearEquipo()">Crear</button>
+            <button onclick="cerrarPopup()">Cerrar</button>
+        </section>
+
+        
+        <section id="editarEquipoPopup">
+            <h2>Editar Equipo</h2>
+            <label for="nuevoNombreEquipo">Nuevo Nombre del Equipo:</label>
+            <input type="text" id="nuevoNombreEquipo" required>
+            <button onclick="editarNombreEquipo()">Guardar Cambios</button>
+            <button onclick="cerrarEditarEquipoPopup()">Cerrar</button>
+        </section>
+
+        <section id="agregarUsuarioPopup">
+            <h2>Agregar Usuario al Equipo</h2>
+            <label for="nombreUsuario">Nombre:</label>
+            <input type="text" id="nombreUsuario" required>
+            <label for="apellidoUsuario">Apellido:</label>
+            <input type="text" id="apellidoUsuario" required>
+            <label for="emailUsuario">Email:</label>
+            <input type="email" id="emailUsuario" required>
+            <button onclick="agregarUsuarioEquipo()">Agregar Usuario</button>
+            <button onclick="cerrarAgregarUsuarioPopup()">Cerrar</button>
+        </section>
+
+        <section>
+            <h2>Equipos</h2>
+            <button onclick="mostrarPopup()">Crear Equipo</button>
+            
+            <div id="listaEquipos">
+                <!-- La lista de equipos se generará dinámicamente aquí -->
+            </div>
+        </section>
+    </div>
+
+    <script src="../js/equipos.js"></script>
+</body>
+</html>

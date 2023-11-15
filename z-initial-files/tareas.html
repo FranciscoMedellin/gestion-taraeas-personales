@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        #crearTareaPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        #editarTareaPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .tarea-item {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tarea-item button {
+            margin-left: 10px;
+        }
+
+        #filtros {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Equipos</a>
+        <a href="#">Tareas</a>
+        <a href="#">Configuraciones</a>
+    </nav>
+
+    <div class="container">
+        <section id="crearTareaPopup">
+            <h2>Crear Tarea</h2>
+            <!-- Agrega los campos necesarios para la creación de la tarea -->
+            <button onclick="crearTarea()">Crear Tarea</button>
+            <button onclick="cerrarCrearTareaPopup()">Cerrar</button>
+        </section>
+
+        <section id="filtros">
+            <h2>Filtros</h2>
+            <!-- Agrega los campos de filtro necesarios -->
+        </section>
+
+        <section id="editarTareaPopup">
+            <h2>Editar Tarea</h2>
+            <!-- Agrega los campos necesarios para la edición de la tarea -->
+            <button onclick="editarTarea()">Guardar Cambios</button>
+            <button onclick="cerrarEditarTareaPopup()">Cerrar</button>
+        </section>
+
+        <!--
+        <section id="listaTareas">
+            <h2>Lista de Tareas</h2> -->
+            <!-- La lista de tareas se generará dinámicamente aquí -->
+        <!-- </section> -->
+        <section>
+            <button onclick="mostrarCrearTareaPopup()">Crear Tarea</button>
+
+            <div id="listaTareas">
+                <h2>Lista de Tareas</h2>
+                <!-- La lista de tareas se generará dinámicamente aquí -->
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // ... (código anterior) ...
+
+        function mostrarCrearTareaPopup() {
+            document.getElementById("crearTareaPopup").style.display = "block";
+        }
+
+        function cerrarCrearTareaPopup() {
+            document.getElementById("crearTareaPopup").style.display = "none";
+        }
+
+        function mostrarEditarTareaPopup() {
+            document.getElementById("editarTareaPopup").style.display = "block";
+        }
+
+        function cerrarEditarTareaPopup() {
+            document.getElementById("editarTareaPopup").style.display = "none";
+        }
+
+        function editarTarea(id) {
+            // Lógica para editar la tarea
+            alert('Tarea editada correctamente');
+            cerrarEditarTareaPopup();
+        }
+
+        // Supongamos que estas son algunas tareas obtenidas del servidor
+        const tareas = [
+            { nombre: 'Tarea 1', id: 1 },
+            { nombre: 'Tarea 2', id: 2 },
+            // Agrega más tareas según sea necesario
+        ];
+
+        // Función para renderizar la lista de tareas
+        function renderizarListaTareas() {
+            const listaTareasElement = document.getElementById('listaTareas');
+            listaTareasElement.innerHTML = '';
+
+            tareas.forEach(tarea => {
+                const tareaItem = document.createElement('div');
+                tareaItem.className = 'tarea-item';
+                tareaItem.innerHTML = `
+                    <span>${tarea.nombre}</span>
+                    <button onclick="mostrarEditarTareaPopup(${tarea.id})">Editar</button>
+                    <button onclick="eliminarTarea(${tarea.id})">Eliminar</button>
+                `;
+                listaTareasElement.appendChild(tareaItem);
+            });
+        }
+
+        // Llamamos a la función para que la lista se renderice al cargar la página
+        renderizarListaTareas();
+    </script>
+</body>
+</html>
