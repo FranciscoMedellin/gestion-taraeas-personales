@@ -1,0 +1,1172 @@
+openapi: 3.0.0
+info:
+  version: "1.0"
+  title: Backendless Equipos API
+security:
+  - userTokenHeader: []
+paths:
+  /data/Equipos:
+    get:
+      summary: Load Equipos objects
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/where'
+        - $ref: '#/components/parameters/loadRelations'
+        - $ref: '#/components/parameters/relationsDepth'
+        - $ref: '#/components/parameters/loadEquiposProperties'
+        - $ref: '#/components/parameters/sortEquiposProperties'
+      responses:
+        '200':
+          description: List of Equipos objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoredEquipos'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+    post:
+      summary: Create Equipos object
+      tags:
+        - Equipos
+      responses:
+        '200':
+          description: A Equipos object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoredEquipos'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+      requestBody:
+        $ref: '#/components/requestBodies/NewEquipos'
+  /data/Equipos/count:
+    get:
+      summary: Get Equipos objects Count
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/where'
+      responses:
+        '200':
+          description: Count of objects
+          content:
+            application/json:
+              schema:
+                type: number
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+  '/data/Equipos/{objectId}':
+    get:
+      summary: Find Equipos object by ID
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/objectId'
+        - $ref: '#/components/parameters/loadRelations'
+        - $ref: '#/components/parameters/relationsDepth'
+        - $ref: '#/components/parameters/loadEquiposProperties'
+      responses:
+        '200':
+          description: A Equipos object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoredEquipos'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+    put:
+      summary: Update Equipos object
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/objectId'
+      responses:
+        '200':
+          description: Updated Equipos object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoredEquipos'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+      requestBody:
+        $ref: '#/components/requestBodies/NewEquipos'
+    delete:
+      summary: Delete Equipos Object
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/objectId'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+  /data/Equipos/first:
+    get:
+      summary: Find the first Equipos object
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/where'
+        - $ref: '#/components/parameters/loadRelations'
+        - $ref: '#/components/parameters/relationsDepth'
+        - $ref: '#/components/parameters/loadEquiposProperties'
+        - $ref: '#/components/parameters/sortEquiposProperties'
+      responses:
+        '200':
+          description: A Equipos objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoredEquipos'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+  /data/Equipos/last:
+    get:
+      summary: Find the last Equipos object
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/where'
+        - $ref: '#/components/parameters/loadRelations'
+        - $ref: '#/components/parameters/relationsDepth'
+        - $ref: '#/components/parameters/loadEquiposProperties'
+        - $ref: '#/components/parameters/sortEquiposProperties'
+      responses:
+        '200':
+          description: A Equipos objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoredEquipos'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+  /data/bulk/Equipos:
+    post:
+      summary: Bulk Create Equipos objects
+      tags:
+        - Equipos
+      responses:
+        '200':
+          description: List of created Equipos objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoredEquipos'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewEquipos'
+        required: true
+    put:
+      summary: Bulk Update Equipos objects
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/where'
+      responses:
+        '200':
+          description: Count of updated objects
+          content:
+            application/json:
+              schema:
+                type: number
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+      requestBody:
+        $ref: '#/components/requestBodies/NewEquipos'
+    delete:
+      summary: Bulk Delete Equipos objects
+      tags:
+        - Equipos
+      parameters:
+        - $ref: '#/components/parameters/where'
+      responses:
+        '200':
+          description: Count of deleted objects
+          content:
+            application/json:
+              schema:
+                type: number
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+  /data/Equipos/properties:
+    get:
+      summary: Load Equipos Schema
+      tags:
+        - Equipos
+      responses:
+        '200':
+          description: List of Equipos table columns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TableColumn'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+
+  /users/register:
+    post:
+      summary: Register a new User
+      tags:
+        - UserService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  oAuthIdentities:
+                    type: string
+                  blUserLocale:
+                    type: string
+                    default: 'en'
+                  password:
+                    type: string
+                  accountType:
+                    type: string
+              required: [email,blUserLocale,password]
+      responses:
+        '200':
+          description: 'Registered object'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    ownerId:
+                      type: string
+                    created:
+                      type: string
+                      format: date-time
+                    email:
+                      type: string
+                    name:
+                      type: string
+                    objectId:
+                      type: string
+                    oAuthIdentities:
+                      type: string
+                    updated:
+                      type: string
+                      format: date-time
+                    blUserLocale:
+                      type: string
+                    userStatus:
+                      type: string
+                    socialAccount:
+                      type: string
+                    accountType:
+                      type: string
+                    lastLogin:
+                      type: string
+                      format: date-time
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+
+  /users/restorepassword/{userIdentity}:
+    get:
+      summary: Restore User Password
+      tags:
+        - UserService
+      parameters:
+        - in: path
+          name: userIdentity
+          required: true
+          schema:
+            type: string
+          description: User Identity
+
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+
+  /users/login:
+    post:
+      summary: User Login
+      tags:
+        - UserService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ownerId:
+                    type: string
+                  created:
+                    type: string
+                    format: date-time
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  objectId:
+                    type: string
+                  oAuthIdentities:
+                    type: string
+                  updated:
+                    type: string
+                    format: date-time
+                  blUserLocale:
+                    type: string
+                  userStatus:
+                    type: string
+                  socialAccount:
+                    type: string
+                  accountType:
+                    type: string
+                  lastLogin:
+                    type: string
+                    format: date-time
+                  user-token:
+                    type: string
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+
+  /users/register/guest:
+    post:
+      summary: User Login as Guest
+      tags:
+        - UserService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user-token:
+                    type: string
+                  objectId:
+                    type: string
+                  userStatus:
+                    type: string
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+
+  /users/logout:
+    post:
+      summary: User Logout
+      tags:
+        - UserService
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackendlessError'
+
+
+servers:
+  - url: >-
+      http://api.backendless.com/E6979618-7FB8-D714-FF25-6C062F65AB00/148A3DDE-3582-480A-8999-74A8FD1F2039
+  - url: >-
+      https://api.backendless.com/E6979618-7FB8-D714-FF25-6C062F65AB00/148A3DDE-3582-480A-8999-74A8FD1F2039
+
+components:
+  parameters:
+    tableName:
+      in: path
+      name: tableName
+      required: true
+      description: Table name
+      schema:
+        type: string
+    objectId:
+      in: path
+      name: objectId
+      required: true
+      description: Object Id
+      schema:
+        type: string
+    relationName:
+      in: path
+      name: relationName
+      required: true
+      description: Relation name
+      schema:
+        type: string
+    pageSize:
+      in: query
+      name: pageSize
+      required: false
+      description: Page Size
+      schema:
+        type: integer
+        minimum: 1
+    offset:
+      in: query
+      name: offset
+      required: false
+      description: Page Offset
+      schema:
+        type: integer
+        minimum: 0
+    where:
+      in: query
+      name: where
+      required: false
+      description: Where Clause
+      schema:
+        type: string
+    loadRelations:
+      in: query
+      name: loadRelations
+      required: false
+      description: Load Relations
+      schema:
+        type: string
+    relationsDepth:
+      in: query
+      name: relationsDepth
+      required: false
+      description: Relations Depth
+      schema:
+        type: number
+    loadEquiposProperties:
+      in: query
+      name: props
+      description: Object Properties
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [objectId,id_usuario_creador,id_equipo,ownerId,nombre_equipo,created,updated]
+        uniqueItems: true
+    sortEquiposProperties:
+      in: query
+      name: sortBy
+      description: Sorting Properties
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [objectId asc,objectId desc,id_usuario_creador asc,id_usuario_creador desc,id_equipo asc,id_equipo desc,ownerId asc,ownerId desc,nombre_equipo asc,nombre_equipo desc,created asc,created desc,updated asc,updated desc]
+        uniqueItems: true
+  requestBodies:
+    NewEquipos:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewEquipos'
+      required: true
+    objectIds:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+            example:
+              - objectId_1
+              - objectId_2
+              - objectId_3
+      description: List of objectIds
+  securitySchemes:
+    userTokenHeader:
+      type: apiKey
+      in: header
+      name: user-token
+  schemas:
+    NewEquipos:
+      type: object
+      description: This is a schema of non stored Equipos object
+      properties:
+        id_usuario_creador:
+          type: string
+        id_equipo:
+          type: string
+        nombre_equipo:
+          type: string
+      required: [nombre_equipo]
+
+    StoredEquipos:
+      type: object
+      description: This is a schema of stored Equipos object
+      properties:
+        objectId:
+          type: string
+        id_usuario_creador:
+          type: string
+        id_equipo:
+          type: string
+        ownerId:
+          type: string
+        nombre_equipo:
+          type: string
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+
+    TableColumn:
+      type: object
+      description: Table Column
+      properties:
+        name:
+          type: string
+          description: Property name
+        type:
+          type: string
+          description: Property type
+          enum:
+            - INT
+            - DOUBLE
+            - BOOLEAN
+            - DATETIME
+            - STRING
+            - STRING_ID
+            - EXTENDED_STRING
+            - TEXT
+            - FILE_REF
+            - DATA_REF
+            - CHILD_OF
+            - JSON
+            - UNKNOWN
+        defaultValue:
+          type: string
+          description: Default property value
+        required:
+          type: boolean
+          description: Is property required
+        customRegex:
+          type: string
+          description: Validation RegExp
+        relatedTable:
+          type: string
+          description: Related table name
+        autoLoad:
+          type: boolean
+          description: Autoload relations
+        isPrimaryKey:
+          type: boolean
+          description: Is Primary key
+    BackendlessError:
+      type: object
+      description: Backendless Error
+      properties:
+        code:
+          type: number
+        message:
+          type: string

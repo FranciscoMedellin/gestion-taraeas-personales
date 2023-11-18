@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuraciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .config-item {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Equipos</a>
+        <a href="#">Tareas</a>
+        <a href="#">Configuraciones</a>
+    </nav>
+
+    <div class="container">
+        <section class="config-item">
+            <h2>Configuración de Perfil</h2>
+            <p><strong>Nombre del Usuario:</strong> John Doe</p>
+            <button onclick="editarNombreUsuario()">Editar</button>
+        </section>
+
+        <section class="config-item">
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <button onclick="editarEmail()">Editar</button>
+        </section>
+
+        <section class="config-item">
+            <h2>Cambiar Contraseña</h2>
+            <label for="nuevaPass">Nueva Contraseña:</label>
+            <input type="password" id="nuevaPass" required>
+            <label for="confirmarPass">Confirmar Contraseña:</label>
+            <input type="password" id="confirmarPass" required>
+            <button onclick="cambiarContraseña()">Cambiar Contraseña</button>
+        </section>
+    </div>
+
+    <script>
+        function editarNombreUsuario() {
+            // Lógica para editar el nombre del usuario
+            alert('Nombre de usuario editado correctamente');
+        }
+
+        function editarEmail() {
+            // Lógica para editar el email del usuario
+            alert('Email editado correctamente');
+        }
+
+        function cambiarContraseña() {
+            // Lógica para cambiar la contraseña del usuario
+            alert('Contraseña cambiada correctamente');
+        }
+    </script>
+</body>
+</html>

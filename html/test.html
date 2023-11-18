@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostrar Nombre de Usuario</title>
+</head>
+<body>
+ 
+    <h1>Bienvenido, <span id="nombreUsuario"></span>!</h1>
+ 
+    <script>
+        // Hacer una petición REST (ejemplo con fetch)
+        fetch('https://api.example.com/obtener-usuario')
+            .then(response => response.json())
+            .then(data => {
+                // Supongamos que la respuesta tiene una propiedad 'nombre' que contiene el nombre de usuario
+                const nombreUsuario = data.nombre;
+ 
+                // Actualizar el contenido HTML con el nombre de usuario
+                document.getElementById('nombreUsuario').textContent = nombreUsuario;
+            })
+            .catch(error => {
+                console.error('Error al obtener el nombre de usuario:', error);
+            });
+</script>
+ 
+</body>
+</html>

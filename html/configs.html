@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuraciones</title>
+    <link rel="stylesheet" href="../css/configs.css">
+</head>
+<body>
+    <nav>
+        <a href="./equipos.html">Equipos</a>
+        <a href="./tareas.html">Tareas</a>
+        <a href="./configs.html">Configuraciones</a>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h2>Configuraciones</h2>
+            
+            <div>
+                <p>Nombre del Usuario:<span id="nombreUsuario"></span></p>
+                <button onclick="mostrarEditarNombrePopup()">Editar Nombre</button>
+            </div>
+
+            <div>
+                <p>Email: <span id="emailUsuario"></span></p>
+                <button onclick="mostrarEditarEmailPopup()">Editar Email</button>
+            </div>
+
+            <button onclick="mostrarCambiarContrasenaPopup()">Cambiar Contraseña</button>
+        </section>
+
+        <section id="editarNombrePopup">
+            <h2>Editar Nombre</h2>
+            <label for="nuevoNombreUsuario">Nuevo Nombre:</label>
+            <input type="text" id="nuevoNombreUsuario" required>
+            <button onclick="editarNombreUsuario()">Guardar Cambios</button>
+            <button onclick="cerrarEditarNombrePopup()">Cerrar</button>
+        </section>
+
+        <section id="editarEmailPopup">
+            <h2>Editar Email</h2>
+            <label for="nuevoEmailUsuario">Nuevo Email:</label>
+            <input type="email" id="nuevoEmailUsuario" required>
+            <button onclick="editarEmailUsuario()">Guardar Cambios</button>
+            <button onclick="cerrarEditarEmailPopup()">Cerrar</button>
+        </section>
+
+        <section id="cambiarContrasenaPopup">
+            <h2>Cambiar Contraseña</h2>
+            <label for="nuevaContrasena">Nueva Contraseña:</label>
+            <input type="password" id="nuevaContrasena" required><br>
+            <label for="confirmarContrasena">Confirmar Contraseña:</label>
+            <input type="password" id="confirmarContrasena" required><br>
+            <button onclick="cambiarContrasena()">Guardar Cambios</button>
+            <button onclick="cerrarCambiarContrasenaPopup()">Cerrar</button>
+        </section>
+    </div>
+
+    <!-- <script src="../js/app.js"></script> -->
+    <!-- <script src="../js/index.js"></script> -->
+    <script src="../js/configs.js"></script>
+</body>
+</html>
